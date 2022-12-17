@@ -14,3 +14,15 @@ fun readInput(name: String) = File("src", "$name.txt")
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
+
+fun String.chunkAtIndex(index: Int): List<String> {
+    return when {
+        index < 0 -> 0
+        index > length -> length
+        else -> index
+    }.let {
+        take(it) to substring(it)
+    }.toList()
+}
+
+fun read(name: String) = File("src", "$name.txt").readText()

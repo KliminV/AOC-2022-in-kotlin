@@ -73,6 +73,13 @@ fun main() {
         return maxTotalCalories + secondTotalCalories + thirdTotalCalories
     }
 
+    fun List<List<Int>>.topNElfes(n: Int): Int {
+        return map { it.sum() }
+            .sortedDescending()
+            .take(3)
+            .sum()
+    }
+
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day01_test")
     check(part1(testInput) == 24000)
